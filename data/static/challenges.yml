@@ -117,15 +117,6 @@
   mitigationUrl: ~
   key: changePasswordBenderChallenge
 -
-  name: 'Christmas Special'
-  category: 'Injection'
-  description: 'Order the Christmas special offer of 2014.'
-  difficulty: 4
-  hint: 'Find out how the application handles unavailable products and try to find a loophole.'
-  hintUrl: 'https://pwning.owasp-juice.shop/part2/injection.html#order-the-christmas-special-offer-of-2014'
-  mitigationUrl: 'https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html'
-  key: christmasSpecialChallenge
--
   name: 'CSP Bypass'
   category: 'XSS'
   tags:
@@ -407,18 +398,6 @@
   mitigationUrl: 'https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html'
   key: dlpPasswordSprayingChallenge
 -
-  name: 'Leaked Unsafe Product'
-  category: 'Sensitive Data Exposure'
-  tags:
-    - Shenanigans
-    - OSINT
-  description: 'Identify an unsafe product that was removed from the shop and <a href="/#/contact">inform the shop</a> which ingredients are dangerous.'
-  difficulty: 4
-  hint: 'Your own SQLi and someone else''s Ctrl-V will be your accomplices in this challenge!'
-  hintUrl: 'https://pwning.owasp-juice.shop/part2/sensitive-data-exposure.html#identify-an-unsafe-product-that-was-removed-from-the-shop-and-inform-the-shop-which-ingredients-are-dangerous'
-  mitigationUrl: ~
-  key: dlpPastebinDataLeakChallenge
--
   name: 'Legacy Typosquatting'
   category: 'Vulnerable Components'
   description: '<a href="/#/contact">Inform the shop</a> about a <i>typosquatting</i> trick it has been a victim of at least in <code>v6.2.0-SNAPSHOT</code>. (Mention the exact name of the culprit)'
@@ -667,15 +646,6 @@
   mitigationUrl: ~
   key: privacyPolicyProofChallenge
 -
-  name: 'Product Tampering'
-  category: 'Broken Access Control'
-  description: 'Change the <code>href</code> of the link within the <a href="/#/search?q=OWASP SSL Advanced Forensic Tool (O-Saft)">OWASP SSL Advanced Forensic Tool (O-Saft)</a> product description into <i>https://owasp.slack.com</i>.'
-  difficulty: 3
-  hint: 'Look for one of the following: a) broken admin functionality, b) holes in RESTful API or c) possibility for SQL Injection.'
-  hintUrl: 'https://pwning.owasp-juice.shop/part2/broken-access-control.html#change-the-href-of-the-link-within-the-o-saft-product-description'
-  mitigationUrl: 'https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html'
-  key: changeProductChallenge
--
   name: 'Reflected XSS'
   category: 'XSS'
   tags:
@@ -745,15 +715,6 @@
   hintUrl: 'https://pwning.owasp-juice.shop/part2/broken-anti-automation.html#reset-mortys-password-via-the-forgot-password-mechanism'
   mitigationUrl: 'https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html'
   key: resetPasswordMortyChallenge
--
-  name: 'Retrieve Blueprint'
-  category: 'Sensitive Data Exposure'
-  description: 'Deprive the shop of earnings by downloading the blueprint for one of its products.'
-  difficulty: 5
-  hint: 'The product you might want to give a closer look is the OWASP Juice Shop Logo (3D-printed).'
-  hintUrl: 'https://pwning.owasp-juice.shop/part2/sensitive-data-exposure.html#deprive-the-shop-of-earnings-by-downloading-the-blueprint-for-one-of-its-products'
-  mitigationUrl: ~
-  key: retrieveBlueprintChallenge
 -
   name: 'SSRF'
   category: 'Broken Access Control'

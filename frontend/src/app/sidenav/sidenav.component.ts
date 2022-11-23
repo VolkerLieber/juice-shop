@@ -21,7 +21,7 @@ import { roles } from '../roles'
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  public applicationName = 'OWASP Juice Shop'
+  public applicationName = 'sepp.med Shop'
   public showGitHubLink = true
   public userEmail = ''
   public scoreBoardVisible: boolean = false

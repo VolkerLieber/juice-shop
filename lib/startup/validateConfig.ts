@@ -11,11 +11,8 @@ const logger = require('../logger')
 const path = require('path')
 const validateSchema = require('yaml-schema-validator/src')
 
-const specialProducts = [
-  { name: '"Christmas Special" challenge product', key: 'useForChristmasSpecialChallenge' },
-  { name: '"Product Tampering" challenge product', key: 'urlForProductTamperingChallenge' },
-  { name: '"Retrieve Blueprint" challenge product', key: 'fileForRetrieveBlueprintChallenge', extra: { key: 'exifForBlueprintChallenge', name: 'list of EXIF metadata properties' } },
-  { name: '"Leaked Unsafe Product" challenge product', key: 'keywordsForPastebinDataLeakChallenge' }
+const specialProducts: Array<{name: string, key: string, extra: {name: string}}> = [
+
 ]
 
 const specialMemories = [

@@ -7,9 +7,8 @@
 
   <mat-toolbar-row fxLayout="row">
 
-    <button (click)="onToggleSidenav()" mat-button style="height:48px; width: 48px;" aria-label="Open Sidenav"
-            matTooltip="{{ 'SIDENAV_HINT' | translate }}" matTooltipPosition="below">
-      <mat-icon>menu</mat-icon>
+    <button routerLink="/contact" mat-button style="height:48px; width: 48px;" aria-label="Customer Feedback">
+      <mat-icon>feedback</mat-icon>
     </button>
 
     <button mat-button routerLink="/search" style="height:60px;" class="buttons" aria-label="Back to homepage">
@@ -119,25 +118,7 @@
     </mat-menu>
 
     <mat-menu #privacySubMenu="matMenu">
-      <button mat-menu-item [routerLink]="['privacy-security/privacy-policy']" aria-label="Go to privacy policy page">
-        <mat-icon>
-          assignment
-        </mat-icon>
-        <span translate>TITLE_PRIVACY_POLICY</span>
-      </button>
-      <button mat-menu-item [routerLink]="['privacy-security/data-export']" aria-label="Go to data export page">
-        <mat-icon>
-          get_app
-        </mat-icon>
-        <span translate>TITLE_REQUEST_DATA_EXPORT</span>
-      </button>
-      <button mat-menu-item (click) = "goToDataErasurePage()" aria-label="Go to data subject page">
-        <mat-icon>
-          delete_forever
-        </mat-icon>
-        <span translate>DATA_SUBJECT_TITLE</span>
-      </button>
-      <mat-divider></mat-divider>
+     
       <button mat-menu-item [routerLink]="['privacy-security/change-password']" aria-label="Go to change password page">
         <mat-icon>
           edit

@@ -301,30 +301,30 @@ async function createProducts () {
     return product
   })
 
-  // add Challenge specific information
-  const christmasChallengeProduct = products.find(({ useForChristmasSpecialChallenge }: { useForChristmasSpecialChallenge: boolean }) => useForChristmasSpecialChallenge)
-  const pastebinLeakChallengeProduct = products.find(({ keywordsForPastebinDataLeakChallenge }: { keywordsForPastebinDataLeakChallenge: string[] }) => keywordsForPastebinDataLeakChallenge)
-  const tamperingChallengeProduct = products.find(({ urlForProductTamperingChallenge }: { urlForProductTamperingChallenge: string }) => urlForProductTamperingChallenge)
-  const blueprintRetrievalChallengeProduct = products.find(({ fileForRetrieveBlueprintChallenge }: { fileForRetrieveBlueprintChallenge: string }) => fileForRetrieveBlueprintChallenge)
+  // // add Challenge specific information
+  // const christmasChallengeProduct = products.find(({ useForChristmasSpecialChallenge }: { useForChristmasSpecialChallenge: boolean }) => useForChristmasSpecialChallenge)
+  // const pastebinLeakChallengeProduct = products.find(({ keywordsForPastebinDataLeakChallenge }: { keywordsForPastebinDataLeakChallenge: string[] }) => keywordsForPastebinDataLeakChallenge)
+  // const tamperingChallengeProduct = products.find(({ urlForProductTamperingChallenge }: { urlForProductTamperingChallenge: string }) => urlForProductTamperingChallenge)
+  // const blueprintRetrievalChallengeProduct = products.find(({ fileForRetrieveBlueprintChallenge }: { fileForRetrieveBlueprintChallenge: string }) => fileForRetrieveBlueprintChallenge)
 
-  christmasChallengeProduct.description += ' (Seasonal special offer! Limited availability!)'
-  christmasChallengeProduct.deletedDate = '2014-12-27 00:00:00.000 +00:00'
-  tamperingChallengeProduct.description += ' <a href="' + tamperingChallengeProduct.urlForProductTamperingChallenge + '" target="_blank">More...</a>'
-  tamperingChallengeProduct.deletedDate = null
-  pastebinLeakChallengeProduct.description += ' (This product is unsafe! We plan to remove it from the stock!)'
-  pastebinLeakChallengeProduct.deletedDate = '2019-02-1 00:00:00.000 +00:00'
+  // christmasChallengeProduct.description += ' (Seasonal special offer! Limited availability!)'
+  // christmasChallengeProduct.deletedDate = '2014-12-27 00:00:00.000 +00:00'
+  // tamperingChallengeProduct.description += ' <a href="' + tamperingChallengeProduct.urlForProductTamperingChallenge + '" target="_blank">More...</a>'
+  // tamperingChallengeProduct.deletedDate = null
+  // pastebinLeakChallengeProduct.description += ' (This product is unsafe! We plan to remove it from the stock!)'
+  // pastebinLeakChallengeProduct.deletedDate = '2019-02-1 00:00:00.000 +00:00'
 
-  let blueprint = blueprintRetrievalChallengeProduct.fileForRetrieveBlueprintChallenge
-  if (utils.isUrl(blueprint)) {
-    const blueprintUrl = blueprint
-    blueprint = utils.extractFilename(blueprint)
-    await utils.downloadToFile(blueprintUrl, 'frontend/dist/frontend/assets/public/images/products/' + blueprint)
-  }
-  datacache.retrieveBlueprintChallengeFile = blueprint
+  // let blueprint = blueprintRetrievalChallengeProduct.fileForRetrieveBlueprintChallenge
+  // if (utils.isUrl(blueprint)) {
+  //   const blueprintUrl = blueprint
+  //   blueprint = utils.extractFilename(blueprint)
+  //   await utils.downloadToFile(blueprintUrl, 'frontend/dist/frontend/assets/public/images/products/' + blueprint)
+  // }
+  // datacache.retrieveBlueprintChallengeFile = blueprint
 
   return await Promise.all(
     products.map(
-      async ({ reviews = [], useForChristmasSpecialChallenge = false, urlForProductTamperingChallenge = false, fileForRetrieveBlueprintChallenge = false, deletedDate = false, ...product }) =>
+      async ({ reviews = [], deletedDate = false, ...product }) =>
         await ProductModel.create({
           name: product.name,
           description: product.description,
@@ -337,23 +337,6 @@ async function createProducts () {
           }
         ).then((persistedProduct) => {
           if (persistedProduct) {
-            if (useForChristmasSpecialChallenge) { datacache.products.christmasSpecial = persistedProduct }
-            if (urlForProductTamperingChallenge) {
-              datacache.products.osaft = persistedProduct
-              datacache.challenges.changeProductChallenge.update({
-                description: customizeChangeProductChallenge(
-                  datacache.challenges.changeProductChallenge.description,
-                  config.get('challenges.overwriteUrlForProductTamperingChallenge'),
-                  persistedProduct)
-              })
-            }
-            if (fileForRetrieveBlueprintChallenge && datacache.challenges.changeProductChallenge.hint) {
-              datacache.challenges.retrieveBlueprintChallenge.update({
-                hint: customizeRetrieveBlueprintChallenge(
-                  datacache.challenges.retrieveBlueprintChallenge.hint,
-                  persistedProduct)
-              })
-            }
             if (deletedDate) void deleteProduct(persistedProduct.id) // TODO Rename into "isDeleted" or "deletedFlag" in config for v14.x release
           } else {
             throw new Error('No persisted product found!')
@@ -377,16 +360,6 @@ async function createProducts () {
           )
     )
   )
-
-  function customizeChangeProductChallenge (description: string, customUrl: string, customProduct: Product) {
-    let customDescription = description.replace(/OWASP SSL Advanced Forensic Tool \(O-Saft\)/g, customProduct.name)
-    customDescription = customDescription.replace('https://owasp.slack.com', customUrl)
-    return customDescription
-  }
-
-  function customizeRetrieveBlueprintChallenge (hint: string, customProduct: Product) {
-    return hint.replace(/OWASP Juice Shop Logo \(3D-printed\)/g, customProduct.name)
-  }
 }
 
 async function createBaskets () {

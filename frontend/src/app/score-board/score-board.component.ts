@@ -60,7 +60,7 @@ export class ScoreBoardComponent implements OnInit {
   public totalChallengesOfDifficulty: Challenge[][] = [[], [], [], [], [], []]
   public showContributionInfoBox: boolean = true
   public questionnaireUrl: string = 'https://forms.gle/2Tr5m1pqnnesApxN8'
-  public appName: string = 'OWASP Juice Shop'
+  public appName: string = 'sepp.med Shop'
   public localBackupEnabled: boolean = true
   public showFeedbackButtons: boolean = true
 

@@ -8,6 +8,73 @@
 
 @include mat.core;
 
+$md-darkbluepalette: (
+    50 : #e2e6ee,
+    100 : #b6c1d5,
+    200 : #8698ba,
+    300 : #566f9e,
+    400 : #315089,
+    500 : #0d3174,
+    600 : #0b2c6c,
+    700 : #092561,
+    800 : #071f57,
+    900 : #031344,
+    A100 : #7990ff,
+    A200 : #4666ff,
+    A400 : #133cff,
+    A700 : #002bf8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$md-sunsetpalette: (
+    50 : #fff7e0,
+    100 : #feeab3,
+    200 : #fddd80,
+    300 : #fccf4d,
+    400 : #fcc426,
+    500 : #fbba00,
+    600 : #fab300,
+    700 : #faab00,
+    800 : #f9a300,
+    900 : #f89400,
+    A100 : #ffffff,
+    A200 : #fff6eb,
+    A400 : #ffdfb8,
+    A700 : #ffd39f,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
 $deeppurple-amber-primary: mat.define-palette(mat.$deep-purple-palette);
 $deeppurple-amber-accent: mat.define-palette(mat.$amber-palette, 700, 600, 800);
 $deeppurple-amber-theme: mat.define-light-theme($deeppurple-amber-primary, $deeppurple-amber-accent);
@@ -28,8 +95,8 @@ $blue-lightblue-primary: mat.define-palette(mat.$blue-palette, 700, 400, 800);
 $blue-lightblue-accent: mat.define-palette(mat.$light-blue-palette, 700, 600, 800);
 $blue-lightblue-theme: mat.define-light-theme($blue-lightblue-primary, $blue-lightblue-accent);
 
-$bluegrey-lightgreen-primary: mat.define-palette(mat.$blue-grey-palette, 600, 500, 900);
-$bluegrey-lightgreen-accent: mat.define-palette(mat.$light-green-palette, 700, 300, 800);
+$bluegrey-lightgreen-primary: mat.define-palette($md-darkbluepalette, 600, 500, 900);
+$bluegrey-lightgreen-accent: mat.define-palette($md-sunsetpalette, 700, 300, 800);
 $bluegrey-lightgreen-warn: mat.define-palette(mat.$deep-orange-palette);
 $bluegrey-lightgreen-theme: mat.define-dark-theme($bluegrey-lightgreen-primary, $bluegrey-lightgreen-accent, $bluegrey-lightgreen-warn);
 
